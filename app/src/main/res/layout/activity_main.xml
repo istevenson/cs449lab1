@@ -6,30 +6,37 @@
     android:layout_height="match_parent"
     tools:context="com.example.a449project.lab1umpirebuddy.MainActivity">
 
-    <EditText
+    <TextView
         android:id="@+id/ballCount"
-        android:layout_width="74dp"
-        android:layout_height="40dp"
+        android:layout_width="75dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="0dp"
+        android:cursorVisible="false"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="none"
+        android:textColorLink="@android:color/black"
+        android:textSize="30sp"
+        android:typeface="sans"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@+id/strikeCount"
-        app:layout_constraintHorizontal_bias="0.612"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.418" />
+        app:layout_constraintVertical_bias="0.512" />
 
-    <EditText
+    <TextView
         android:id="@+id/strikeCount"
-        android:layout_width="74dp"
-        android:layout_height="40dp"
+        android:layout_width="75dp"
+        android:layout_height="59dp"
         android:ems="10"
-        android:inputType="number"
-        app:layout_constraintTop_toTopOf="parent"
+        android:inputType="none"
+        android:textColorLink="@android:color/black"
+        android:textSize="30sp"
+        android:typeface="sans"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.312"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintLeft_toRightOf="@+id/strikeLabel"
-        app:layout_constraintHorizontal_bias="0.148" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.34" />
 
     <TextView
         android:id="@+id/strikeLabel"
@@ -55,7 +62,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.419" />
+        app:layout_constraintVertical_bias="0.48" />
 
     <Button
         android:id="@+id/strikeButton"
@@ -64,9 +71,9 @@
         android:layout_height="56dp"
         android:layout_below="@id/ballLabel"
         android:text="Strike"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/ballButton"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ballLabel" />
 
     <Button
@@ -78,6 +85,7 @@
         app:layout_constraintLeft_toRightOf="@+id/strikeButton"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ballCount" />
+        app:layout_constraintTop_toBottomOf="@+id/ballCount"
+        app:layout_constraintVertical_bias="0.408" />
 
 </android.support.constraint.ConstraintLayout>

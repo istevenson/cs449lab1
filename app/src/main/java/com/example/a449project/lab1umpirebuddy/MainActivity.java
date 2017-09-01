@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void outBatter() {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setMessage("That's a strike!");
+        alert.setMessage("That's an out!");
         alert.setCancelable(false);
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
