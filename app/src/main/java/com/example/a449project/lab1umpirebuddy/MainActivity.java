@@ -2,6 +2,7 @@ package com.example.a449project.lab1umpirebuddy;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,10 +15,13 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     // initialize constants
     private static final String TAG = "MainActivity";
+    private static final String OUT_TOTAL = "outTotal";
+    private static final String PREFS = "Prefs";
 
     // initialize balls and strike counts
     private int ballCount = 0;
     private int strikeCount = 0;
+    private int totalOuts = 0;
 
 
     @Override
@@ -26,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // check if persistent counts, if so load them
         if (savedInstanceState != null) {
             ballCount = savedInstanceState.getInt("ballCount");
             strikeCount = savedInstanceState.getInt("strikeCount");
@@ -42,6 +45,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // update counts to display
         updateCountsToView();
 
+        // persisted outs
+        SharedPreferences settings = getSharedPreferences(PREFS, 0);
+        totalOuts = settings.getInt(OUT_TOTAL, totalOuts);
+        updateTotalOuts();
     }
 
     @Override
@@ -65,6 +72,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // strike count from view
         TextView strikes = (TextView)findViewById(R.id.strikeCount);
         strikes.setText(Integer.toString(strikeCount));
+    }
+
+    private void updateTotalOuts() {
+        TextView outs = (TextView) findViewById(R.id.totalOutsCount);
+        outs.setText(Integer.toString(totalOuts));
     }
 
     @Override

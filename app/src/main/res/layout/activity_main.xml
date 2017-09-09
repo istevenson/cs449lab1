@@ -10,7 +10,6 @@
         android:id="@+id/ballCount"
         android:layout_width="75dp"
         android:layout_height="70dp"
-        android:layout_marginLeft="0dp"
         android:cursorVisible="false"
         android:ems="10"
         android:inputType="none"
@@ -87,5 +86,32 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ballCount"
         app:layout_constraintVertical_bias="0.408" />
+
+    <TextView
+        android:id="@+id/totalOutsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Outs"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="30sp"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="58dp"
+        app:layout_constraintBottom_toTopOf="@+id/strikeLabel"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/totalOutsCount"
+        android:layout_width="75dp"
+        android:layout_height="59dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="30sp"
+        android:visibility="visible"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/totalOutsLabel"
+        app:layout_constraintHorizontal_bias="0.214"
+        app:layout_constraintBottom_toTopOf="@+id/strikeCount"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
