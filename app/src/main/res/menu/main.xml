@@ -3,11 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".AboutActivity">
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/reset"
+        android:title="Reset"
+        android:icon="@drawable/refresh"
+        app:showAsAction="withText|ifRoom" />
 
     <item
         android:id="@+id/about"
         android:title="About"
-        android:orderInCategory="100"
         app:showAsAction="never" />
+
 </menu>

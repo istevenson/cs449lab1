@@ -1,13 +1,19 @@
 package com.example.a449project.lab1umpirebuddy;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    // initialize constants
+    private static final String TAG = "MainActivity";
 
     // initialize balls and strike counts
     private int ballCount = 0;
@@ -20,6 +26,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // check if persistent counts, if so load them
+        if (savedInstanceState != null) {
+            ballCount = savedInstanceState.getInt("ballCount");
+            strikeCount = savedInstanceState.getInt("strikeCount");
+        }
+
         // set ball and strike buttons from view
         View ballButton = findViewById(R.id.ballButton);
         ballButton.setOnClickListener(this);
@@ -30,6 +42,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // update counts to display
         updateCountsToView();
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // inflate the menu, adding items that are there
+        getMenuInflater().inflate(R.menu.menu, menu);
+
+        return true;
     }
 
     private void resetCounts() {
@@ -58,6 +78,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.about:
+                Intent intent = new Intent(this,AboutActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.reset:
+                resetCounts();
+                updateCountsToView();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void ballAction() {
@@ -104,5 +140,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         alert.show();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle b) {
+        super.onSaveInstanceState(b);
+
+        Log.i(TAG, "onSaveInstanceState()");
+        b.putInt("strikeCount", strikeCount);
+        b.putInt("ballCount", ballCount);
     }
 }
